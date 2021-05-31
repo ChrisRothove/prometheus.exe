@@ -14,12 +14,16 @@ function getUsernames(users) {
 }
 
 bot.on("message", (msg) => {
-  if (msg.content.startsWith("<3headpats")) {
+  if (msg.content.startsWith("</3headpats")) {
     if (msg.mentions.users.size) {
       const taggedUsers = getUsernames(msg.mentions.users);
-      msg.channel.send(`You gave ${taggedUsers.join(", and ")} a headpat!`);
+      if (taggedUsers.includes(msg.author.username)) {
+        msg.reply("You headpat yourself...?");
+      } else {
+        msg.channel.send(`You gave ${taggedUsers.join(", and ")} a headpat!`);
+      }
     } else {
-      msg.reply("you headpat yourself...?");
+      msg.reply("You headpat yourself...?");
     }
   }
 });
