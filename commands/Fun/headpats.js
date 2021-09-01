@@ -1,3 +1,7 @@
+function getUsernames(users) {
+  return users.map((user) => user.username);
+}
+
 module.exports = {
   name: "headpats",
   description: "Gives tagged member a headpat",

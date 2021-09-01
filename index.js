@@ -22,10 +22,6 @@ botClient.on("ready", () => {
   console.info(`Logged in as ${botClient.user.tag}!`);
 });
 
-function getUsernames(users) {
-  return users.map((user) => user.username);
-}
-
 botClient.on("message", (msg) => {
   if (!msg.content.startsWith(PREFIX) || msg.author.bot) return;
 
