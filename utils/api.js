@@ -35,9 +35,14 @@ async function getStarted(discord_id) {
     const response = await axios.post(
       `${API_BASE_URL}/players/${discord_id}/start`
     );
+    if (response.status !== 201) {
+      throw new Error("Rejected: player already exists");
+    }
     console.log(response);
+    return response;
   } catch (error) {
     console.error(error);
+    return error;
   }
 }
 
